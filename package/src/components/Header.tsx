@@ -1,5 +1,5 @@
 /* eslint-disable radix */
-
+import { useTranslation } from 'react-i18next'
 import {
   Grid,
   makeStyles,
@@ -39,18 +39,18 @@ interface HeaderProps {
 }
 
 const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'June',
-  'July',
-  'Aug',
-  'Sept',
-  'Oct',
-  'Nov',
-  'Dec',
+  'translations.months.jan',
+  'translations.months.feb',
+  'translations.months.mar',
+  'translations.months.apr',
+  'translations.months.may',
+  'translations.months.june',
+  'translations.months.july',
+  'translations.months.aug',
+  'translations.months.sept',
+  'translations.months.oct',
+  'translations.months.nov',
+  'translations.months.dez',
 ];
 
 const generateYears = (relativeTo: Date, count: number) => {
@@ -69,6 +69,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   onClickPrevious,
 }: HeaderProps) => {
   const classes = useStyles();
+  const { t } = useTranslation()
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setDate(setMonth(date, parseInt(event.target.value)));
@@ -79,7 +80,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   };
 
   return (
-    <Grid container justifyContent="space-between" alignItems="center">
+    <Grid container justify="space-between" alignItems="center">
       <Grid item className={classes.iconContainer}>
         <IconButton
           className={classes.icon}
@@ -97,7 +98,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
         >
           {MONTHS.map((month, idx) => (
             <MenuItem key={month} value={idx}>
-              {month}
+              {t(month)}
             </MenuItem>
           ))}
         </Select>

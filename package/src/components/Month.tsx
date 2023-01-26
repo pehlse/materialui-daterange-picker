@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next'
 import {
   Paper,
   Grid,
@@ -27,7 +28,15 @@ import Day from './Day';
 // eslint-disable-next-line no-unused-vars
 import { NavigationAction, DateRange } from '../types';
 
-const WEEK_DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const WEEK_DAYS = [
+  'translations.days.su',
+  'translations.days.mo',
+  'translations.days.tu',
+  'translations.days.we',
+  'translations.days.th',
+  'translations.days.fr',
+  'translations.days.sa'
+];
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -66,7 +75,8 @@ interface MonthProps {
 
 const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
+  
   const {
     helpers,
     handlers,
@@ -97,12 +107,12 @@ const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
           item
           container
           direction="row"
-          justifyContent="space-between"
+          justify="space-between"
           className={classes.weekDaysContainer}
         >
           {WEEK_DAYS.map((day) => (
             <Typography color="textSecondary" key={day} variant="caption">
-              {day}
+              {t(day)}
             </Typography>
           ))}
         </Grid>
@@ -111,12 +121,12 @@ const Month: React.FunctionComponent<MonthProps> = (props: MonthProps) => {
           item
           container
           direction="column"
-          justifyContent="space-between"
+          justify="space-between"
           className={classes.daysContainer}
         >
           {chunks(getDaysInMonth(date), 7).map((week, idx) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Grid key={idx} container direction="row" justifyContent="center">
+            <Grid key={idx} container direction="row" justify="center" item>
               {week.map((day) => {
                 const isStart = isStartOfRange(dateRange, day);
                 const isEnd = isEndOfRange(dateRange, day);

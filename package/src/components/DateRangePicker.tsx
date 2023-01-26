@@ -36,6 +36,7 @@ interface DateRangePickerProps {
   minDate?: Date | string;
   maxDate?: Date | string;
   onChange: (dateRange: DateRange) => void;
+  formatDate?: string
 }
 
 const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = (
@@ -50,6 +51,7 @@ const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = (
     minDate,
     maxDate,
     definedRanges = defaultRanges,
+    formatDate = 'dd/MM/yyyy'
   } = props;
 
   const minDateValid = parseOptionalDate(minDate, addYears(today, -10));
@@ -164,6 +166,7 @@ const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = (
       setDateRange={setDateRangeValidated}
       helpers={helpers}
       handlers={handlers}
+      formatDate={formatDate}
     />
   ) : null;
 };

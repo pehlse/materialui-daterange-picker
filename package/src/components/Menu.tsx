@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'
 import {
   Paper,
   Grid,
@@ -45,6 +46,7 @@ interface MenuProps {
   maxDate: Date;
   firstMonth: Date;
   secondMonth: Date;
+  formatDate: string;
   setFirstMonth: Setter<Date>;
   setSecondMonth: Setter<Date>;
   setDateRange: Setter<DateRange>;
@@ -60,6 +62,7 @@ interface MenuProps {
 
 const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
   const classes = useStyles();
+  const { t } = useTranslation()
 
   const {
     ranges,
@@ -67,6 +70,7 @@ const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
     minDate,
     maxDate,
     firstMonth,
+    formatDate,
     setFirstMonth,
     secondMonth,
     setSecondMonth,
@@ -87,7 +91,7 @@ const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
           <Grid container className={classes.header} alignItems="center">
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
-                {startDate ? format(startDate, 'MMMM DD, YYYY') : 'Start Date'}
+                {startDate ? format(startDate, formatDate) : t('translation.startDate')}
               </Typography>
             </Grid>
             <Grid item className={classes.headerItem}>
@@ -95,12 +99,12 @@ const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
             </Grid>
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
-                {endDate ? format(endDate, 'MMMM DD, YYYY') : 'End Date'}
+                {endDate ? format(endDate, formatDate) : t('translation.endDate')}
               </Typography>
             </Grid>
           </Grid>
           <Divider />
-          <Grid container direction="row" justifyContent="center" wrap="nowrap">
+          <Grid container direction="row" justify="center" wrap="nowrap">
             <Month
               {...commonProps}
               value={firstMonth}
