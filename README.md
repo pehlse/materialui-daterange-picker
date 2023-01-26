@@ -74,6 +74,7 @@ Name | Type | Required | Default value | Description
 `definedRanges` | `DefinedRange[]` | _optional_ | - | custom defined ranges to show in the list
 `closeOnClickOutside` | `boolean` | _optional_ | `true` | defines if DateRangePicker will be closed when clicking outside of it
 `wrapperClassName` | `object` | _optional_ | `undefined` | defines additional wrapper style classes
+`formatDate` | `string` | _optional_ | `dd/MM/yyyy` | defines how the date will be formatted for display on the calendar 
 
 ## Made possible by
 
