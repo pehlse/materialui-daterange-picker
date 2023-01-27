@@ -1,5 +1,4 @@
 /* eslint-disable radix */
-import { useTranslation } from 'react-i18next'
 import {
   Grid,
   makeStyles,
@@ -39,18 +38,18 @@ interface HeaderProps {
 }
 
 const MONTHS = [
-  'translations.months.jan',
-  'translations.months.feb',
-  'translations.months.mar',
-  'translations.months.apr',
-  'translations.months.may',
-  'translations.months.june',
-  'translations.months.july',
-  'translations.months.aug',
-  'translations.months.sept',
-  'translations.months.oct',
-  'translations.months.nov',
-  'translations.months.dez',
+  'Jan',
+  'Fev',
+  'Mar',
+  'Abr',
+  'Mai',
+  'Jun',
+  'Jul',
+  'Ago',
+  'Set',
+  'Out',
+  'Nov',
+  'Dez',
 ];
 
 const generateYears = (relativeTo: Date, count: number) => {
@@ -69,7 +68,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   onClickPrevious,
 }: HeaderProps) => {
   const classes = useStyles();
-  const { t } = useTranslation()
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setDate(setMonth(date, parseInt(event.target.value)));
@@ -98,7 +96,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
         >
           {MONTHS.map((month, idx) => (
             <MenuItem key={month} value={idx}>
-              {t(month)}
+              {month}
             </MenuItem>
           ))}
         </Select>

@@ -75,9 +75,3 @@ Name | Type | Required | Default value | Description
 `closeOnClickOutside` | `boolean` | _optional_ | `true` | defines if DateRangePicker will be closed when clicking outside of it
 `wrapperClassName` | `object` | _optional_ | `undefined` | defines additional wrapper style classes
 `formatDate` | `string` | _optional_ | `dd/MM/yyyy` | defines how the date will be formatted for display on the calendar 
-
-## Made possible by
-
-<a href="https://github.com/jungsoft/materialui-daterange-picker/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=jungsoft/materialui-daterange-picker" />
-</a>

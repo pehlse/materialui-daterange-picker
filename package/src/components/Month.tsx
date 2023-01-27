@@ -29,13 +29,13 @@ import Day from './Day';
 import { NavigationAction, DateRange } from '../types';
 
 const WEEK_DAYS = [
-  'translations.days.su',
-  'translations.days.mo',
-  'translations.days.tu',
-  'translations.days.we',
-  'translations.days.th',
-  'translations.days.fr',
-  'translations.days.sa'
+  'Dom',
+  'Seg',
+  'Ter',
+  'Qua',
+  'Qui',
+  'Sex',
+  'Sáb'
 ];
 
 const useStyles = makeStyles(() => ({
